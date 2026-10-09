@@ -8,7 +8,7 @@ An Android nutrition tracker combining easy meal logging with data-guided nutrit
 
 **[Download MacroFlow for Android](https://github.com/raclob/Macroflow/raw/refs/heads/downloads/macroflow-debug.apk)**
 
-The public download works without a GitHub account. You can also use the [APK file page](downloads/macroflow-v1.0.0-preview.1.apk) or the [Android Preview release page](https://github.com/raclob/Macroflow/releases/tag/v1.0.0-preview.1). GitHub's **Code → Download ZIP** includes the versioned APK in `downloads/` when viewing this app branch.
+The public download works without a GitHub account. You can also use the [APK file page](downloads/macroflow-v1.0.0-preview.1.apk) or the [Android Preview release page](https://github.com/raclob/Macroflow/releases/tag/v1.0.0-preview.1). GitHub's **Code → Download ZIP** includes the versioned APK in `downloads/` on the default branch.
 
 1. Download the APK on your Android phone.
 2. Open it and allow installation from your browser or file manager if Android asks.

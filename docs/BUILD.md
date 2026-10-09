@@ -45,4 +45,4 @@ Open `app/android/` in Android Studio for emulator/device acceptance testing and
 
 GitHub Actions runs formatting, unit tests, production browser flows, Android compilation, and Android lint on pushes and pull requests. Successful Android runs provide an APK in the **MacroFlow-debug** artifact.
 
-The `downloads/` folder contains the signed preview APK so a source ZIP also includes an installable app. The public `downloads` branch keeps the existing direct download URL working while source changes are under review. The preview release links to that APK because release-asset uploads were unavailable in the build environment.
+The `downloads/` folder contains the signed preview APK so a source ZIP also includes an installable app. The public `downloads` branch preserves the stable direct download URL for this preview. The preview release links to that APK because release-asset uploads were unavailable in the build environment.
