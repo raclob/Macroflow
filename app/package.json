@@ -10,8 +10,8 @@
     "android:sync": "npm run build && cap sync android",
     "test:e2e": "npm run build && node scripts/e2e.cjs",
     "preview": "vite preview --host 0.0.0.0",
-    "format": "prettier --write src scripts .github package.json capacitor.config.ts vite.config.ts tsconfig.json index.html README.md .prettierrc.json",
-    "format:check": "prettier --check src scripts .github package.json capacitor.config.ts vite.config.ts tsconfig.json index.html README.md .prettierrc.json"
+    "format": "prettier --write src scripts ../.github package.json capacitor.config.ts vite.config.ts tsconfig.json index.html README.md ../README.md ../docs ../downloads/README.md .prettierrc.json",
+    "format:check": "prettier --check src scripts ../.github package.json capacitor.config.ts vite.config.ts tsconfig.json index.html README.md ../README.md ../docs ../downloads/README.md .prettierrc.json"
   },
   "dependencies": {
     "@capacitor/android": "^7.4.3",

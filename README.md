@@ -2,74 +2,48 @@
 
 **Your nutrition. Your rhythm.**
 
-An original, local-first nutrition app combining easy meal logging with data-guided nutrition planning. Built with React, TypeScript, and Capacitor; packaged as an Android app with bundled assets and fonts.
+An Android nutrition tracker combining easy meal logging with data-guided nutrition planning. Built with React, TypeScript, and Capacitor.
 
-## Install
+## Download on your phone
 
 **[Download MacroFlow for Android](https://github.com/raclob/Macroflow/raw/refs/heads/downloads/macroflow-debug.apk)**
 
-You can also find the download link on the [MacroFlow Android Preview release page](https://github.com/raclob/Macroflow/releases/tag/v1.0.0-preview.1). Download `macroflow-debug.apk`, transfer it to an Android phone (Android 6.0 or newer), open it, and allow installation from your browser or file manager if Android asks. This is a signed development APK; Play Store publication requires a release build signed with your own key.
+The public download works without a GitHub account. You can also use the [APK file page](downloads/macroflow-v1.0.0-preview.1.apk) or the [Android Preview release page](https://github.com/raclob/Macroflow/releases/tag/v1.0.0-preview.1). GitHub's **Code → Download ZIP** includes the versioned APK in `downloads/` when viewing this app branch.
 
-For future builds, the **MacroFlow-debug** artifact in a successful [GitHub Actions run](https://github.com/raclob/Macroflow/actions) also contains an APK. Extract the artifact ZIP to find `app-debug.apk`.
+1. Download the APK on your Android phone.
+2. Open it and allow installation from your browser or file manager if Android asks.
+3. Launch **MacroFlow**, then tap **Make it yours** to set up your own diary and targets.
 
-The app opens a clearly labeled sample diary. Tap **Make it yours** to enter your name, goals, and initial calorie/macronutrient targets. Sample logs never become personal logs. You can explore the demo again through Settings and return to your own diary.
+Requires Android 6.0 or newer and a current Android System WebView. This signed development preview still needs physical-device acceptance testing and release signing before store publication.
 
-## Features
+## What you can do
 
-- Daily calorie ring, macro targets, and remaining nutrients.
-- Date-based meal diary with fractional portions, favorites, recent foods, and custom foods.
-- Twenty starter foods with estimated serving nutrition.
-- Manual barcode-number lookup through Open Food Facts, including nutrition completeness checks. No camera scanner is included.
-- Water logging in 250 ml increments and weight entries in kg.
-- Weight charts for 7, 28, and 90 days, smoothed trend, and daily intake charts.
-- Weekly check-in with estimated expenditure and a reviewable calorie suggestion.
-- Local persistence, JSON backup export through Android's share sheet, and validated backup restore.
-- Native Android back behavior, branded icon and splash screen, phone/tablet layouts, keyboard focus handling, and reduced-motion support.
+- Log meals with fractional portions, favorites, recent foods, and custom foods.
+- Look up foods by entering a barcode number through Open Food Facts.
+- Track calories, macros, water, and body weight.
+- Explore weight trends and intake charts.
+- Review weekly calorie suggestions based on completed diary days and weigh-ins.
+- Export and restore JSON backups, including the original Fuel prototype's backups.
 
-## How the plan works
+The app starts with a clearly labeled demo. Your personal diary stays on your device. Meal logging works offline; barcode lookup uses the internet.
 
-A check-in needs 14 completed intake days and at least 4 weigh-ins spanning 14 days during the previous 28 days. Today's intake is excluded. Complete a day in the diary when all meals are logged.
+## Source and documentation
 
-The estimator fits a linear trend to recorded weights. It computes expenditure as mean completed-day calories minus the daily weight slope multiplied by 7,700 kcal/kg. It then uses a modest goal adjustment: minus 300 kcal for loss, plus 200 for gain, zero for maintenance. Changes are capped at 100 kcal per weekly check-in; calorie targets stay within 1,200–5,000 and must accommodate the protein target. Protein stays steady and fat is reduced if necessary. This is a transparent prototype estimator, not MacroFactor's proprietary algorithm or a measured metabolic rate.
+| Folder                     | Contents                                                         |
+| -------------------------- | ---------------------------------------------------------------- |
+| [`app/`](app/)             | Application source, Android project, assets, and tests           |
+| [`docs/`](docs/)           | Build instructions, nutrition model, privacy, and preview status |
+| [`downloads/`](downloads/) | Installable versioned Android preview APK                        |
+| [`.github/`](.github/)     | Automated app checks and Android builds                          |
 
-## Upgrading the original Fuel prototype
+Read the [build guide](docs/BUILD.md), [nutrition model](docs/NUTRITION.md), [privacy notes](docs/PRIVACY.md), and [preview status](docs/STATUS.md).
 
-MacroFlow uses the Android application ID `com.raclob.macroflow`. If you installed the original Fuel APK, export your diary from Fuel, install MacroFlow, then restore the JSON backup through Settings. The existing backup format is compatible. Browser users keep their existing data through a migration from the previous storage keys.
-
-## Continuous integration
-
-GitHub Actions runs formatting checks, unit tests, production browser flows, Android compilation, and Android lint on pushes and pull requests. Successful Android runs provide a signed development APK as the **MacroFlow-debug** artifact. No publishing credentials are needed. Store releases require your own signing key.
-
-## Privacy and scope
-
-Logs live in the app's WebView local storage. Export before reinstalling or clearing app data. Android automatic backup is disabled so logs are not implicitly uploaded. There is no account, subscription, server, or synchronization. Barcode lookup sends the barcode to Open Food Facts. No other network access is needed after installation.
-
-This MVP uses kg and kcal and manual initial targets. It does not include Health Connect, exercise imports, camera scanning, recipe composition, cloud accounts, or a commercial branded-food database. Adaptive estimates can be affected by incomplete logging and short-term weight changes. Starter food and community barcode values should be checked against packaging.
-
-## Development
-
-Requirements: Node 20+, JDK 21, Android SDK platform 35 and build tools 35.0.0.
+For local development:
 
 ```sh
+cd app
 npm ci
 npm run dev
-npm test
-npm run android:sync
-cd android
-./gradlew assembleDebug
 ```
 
-Set `ANDROID_HOME` to your SDK or add `sdk.dir=/absolute/path/to/sdk` to `android/local.properties`. For browser checks, install a browser with `npx playwright install chromium`, then run `npm run test:e2e`. The command builds the app and starts a temporary production preview server automatically. Set `CHROMIUM_PATH` if you prefer a system browser. Use `npm run format:check` to check formatting, and `npm run format` before committing edits.
-
-The generated APK is in `android/app/build/outputs/apk/debug/app-debug.apk`. Open `android/` in Android Studio for emulator/device testing and release signing. This workspace's SDK and JDK caches are excluded from source archives.
-
-## Verification
-
-- Production TypeScript and Vite build.
-- 14 unit tests for accounting, adaptive baseline thresholds and bounds, smoothing, and backup validation.
-- Browser end-to-end checks: onboarding, portions, favorites, custom foods, deletion, completion, water, weight, persistence, export/import, demo isolation, and applying a weekly check-in.
-- Layout checks for all four views at 360, 393, 768, and 1,440 px with no horizontal overflow or runtime errors.
-- Barcode lookup UI checks with successful and unknown-product responses; live Open Food Facts API response verified.
-- Android debug APK compilation, lint, and signature inspection. No physical Android device or emulator was available in this environment; native share, keyboard, and device behavior still need device acceptance testing.
-
-DM Sans is bundled under the SIL Open Font License (`public/fonts/OFL.txt`). Starter food values are approximate. Open Food Facts attribution and source are identified in the barcode lookup flow.
+Successful [GitHub Actions builds](https://github.com/raclob/Macroflow/actions) also provide a **MacroFlow-debug** artifact. Extract its ZIP to find `app-debug.apk`.

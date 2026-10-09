@@ -2,17 +2,17 @@ node_modules/
 dist/
 .android-sdk/
 .gradle/
-android/local.properties
-android/.gradle/
-android/app/build/
+app/android/local.properties
+app/android/.gradle/
+app/android/app/build/
 artifacts/
 .jdk/
 .java/
 .android-user/
 .npm-cache/
 *.tsbuildinfo
-android/build/
-android/capacitor-cordova-android-plugins/build/
+app/android/build/
+app/android/capacitor-cordova-android-plugins/build/
 
 # Build caches and local signing keys
 **/.kotlin/
