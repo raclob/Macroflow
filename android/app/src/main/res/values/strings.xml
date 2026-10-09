@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">MacroFlow</string>
+    <string name="title_activity_main">MacroFlow</string>
+    <string name="package_name">com.raclob.macroflow</string>
+    <string name="custom_url_scheme">com.raclob.macroflow</string>
+</resources>
