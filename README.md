@@ -6,9 +6,9 @@ An original, local-first nutrition app combining easy meal logging with data-gui
 
 ## Install
 
-**[Download MacroFlow for Android](https://github.com/raclob/Macroflow/releases/download/v1.0.0-preview.1/macroflow-debug.apk)**
+**[Download MacroFlow for Android](https://github.com/raclob/Macroflow/raw/refs/heads/downloads/macroflow-debug.apk)**
 
-You can also find the APK under [Releases → MacroFlow Android Preview → Assets](https://github.com/raclob/Macroflow/releases/tag/v1.0.0-preview.1). Download `macroflow-debug.apk`, transfer it to an Android phone (Android 6.0 or newer), open it, and allow installation from your browser or file manager if Android asks. This is a signed development APK; Play Store publication requires a release build signed with your own key.
+You can also find the download link on the [MacroFlow Android Preview release page](https://github.com/raclob/Macroflow/releases/tag/v1.0.0-preview.1). Download `macroflow-debug.apk`, transfer it to an Android phone (Android 6.0 or newer), open it, and allow installation from your browser or file manager if Android asks. This is a signed development APK; Play Store publication requires a release build signed with your own key.
 
 For future builds, the **MacroFlow-debug** artifact in a successful [GitHub Actions run](https://github.com/raclob/Macroflow/actions) also contains an APK. Extract the artifact ZIP to find `app-debug.apk`.
 
